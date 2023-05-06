@@ -50,7 +50,7 @@ const App = () => {
     <div>
       <nav className="navbar navbar-expand navbar-dark bg-dark">
         <Link to={"/"} className="navbar-brand">
-          bezKoder
+          Scavenger Hunt
         </Link>
         <div className="navbar-nav mr-auto">
           <li className="nav-item">
@@ -114,7 +114,7 @@ const App = () => {
         )}
       </nav>
 
-      <div className="container mt-3">
+      <div className="">
         <Routes>
           <Route exact path={"/"} element={<Home />} />
           <Route exact path={"/home"} element={<Home />} />
