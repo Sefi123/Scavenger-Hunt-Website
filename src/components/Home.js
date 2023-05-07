@@ -1,9 +1,11 @@
 // import UserService from "../services/user.service";
 
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./home.css";
 
 function Home() {
+  const navigate = useNavigate();
   return (
     <div className="home">
       {/* <header>
@@ -24,13 +26,13 @@ function Home() {
 
       <main>
         <div className="hero">
-          <h1>Welcome to My Site</h1>
+          <h1>Welcome to Scavenger Hunt</h1>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at enim
-            vel odio vulputate scelerisque. Sed eget justo vel mauris porttitor
-            placerat non non lorem.
+            Want some excitement? You are come on right place. You can create
+            Scavenger Hunt for play. Just Click below button to create Scavenger
+            Hunt. Hope You'll enjoy it!
           </p>
-          <button>Learn More</button>
+          <button onClick={() => navigate("/scavenger_form")}>CREATE</button>
         </div>
       </main>
 

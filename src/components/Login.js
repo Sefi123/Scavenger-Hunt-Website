@@ -9,9 +9,7 @@ import AuthService from "../services/auth.service";
 const required = (value) => {
   if (!value) {
     return (
-      <div className="invalid-feedback d-block">
-        This field is required!
-      </div>
+      <div className="invalid-feedback d-block">This field is required!</div>
     );
   }
 };
@@ -48,7 +46,7 @@ const Login = () => {
     if (checkBtn.current.context._errors.length === 0) {
       AuthService.login(username, password).then(
         () => {
-          navigate("/profile");
+          navigate("/home");
           window.location.reload();
         },
         (error) => {

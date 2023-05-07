@@ -12,9 +12,11 @@ import Profile from "./components/Profile";
 import BoardUser from "./components/BoardUser";
 import BoardModerator from "./components/BoardModerator";
 import BoardAdmin from "./components/BoardAdmin";
+import { ToastContainer } from "react-toastify";
 
 // import AuthVerify from "./common/AuthVerify";
 import EventBus from "./common/EventBus";
+import Form from "./components/ScavengerForm";
 
 const App = () => {
   const [showModeratorBoard, setShowModeratorBoard] = useState(false);
@@ -26,8 +28,8 @@ const App = () => {
 
     if (user) {
       setCurrentUser(user);
-      setShowModeratorBoard(user.roles.includes("ROLE_MODERATOR"));
-      setShowAdminBoard(user.roles.includes("ROLE_ADMIN"));
+      // setShowModeratorBoard(user.roles.includes("ROLE_MODERATOR"));
+      // setShowAdminBoard(user.roles.includes("ROLE_ADMIN"));
     }
 
     EventBus.on("logout", () => {
@@ -48,6 +50,7 @@ const App = () => {
 
   return (
     <div>
+      <ToastContainer />
       <nav className="navbar navbar-expand navbar-dark bg-dark">
         <Link to={"/"} className="navbar-brand">
           Scavenger Hunt
@@ -59,7 +62,7 @@ const App = () => {
             </Link>
           </li>
 
-          {showModeratorBoard && (
+          {/* {showModeratorBoard && (
             <li className="nav-item">
               <Link to={"/mod"} className="nav-link">
                 Moderator Board
@@ -81,7 +84,7 @@ const App = () => {
                 User
               </Link>
             </li>
-          )}
+          )} */}
         </div>
 
         {currentUser ? (
@@ -118,6 +121,7 @@ const App = () => {
         <Routes>
           <Route exact path={"/"} element={<Home />} />
           <Route exact path={"/home"} element={<Home />} />
+          <Route exact path={"/scavenger_form"} element={<Form />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/register" element={<Register />} />
           <Route exact path="/profile" element={<Profile />} />

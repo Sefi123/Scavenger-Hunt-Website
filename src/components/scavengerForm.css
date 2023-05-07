@@ -1,0 +1,188 @@
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  margin: auto;
+  margin-top: 2rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.form-group div {
+  width: 50%;
+  margin: auto;
+}
+
+.form-group label {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.form-group input {
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: none;
+  background-color: #f2f2f2;
+  font-size: 1.2rem;
+  width: 100%;
+}
+
+.form-group textarea {
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: none;
+  background-color: #f2f2f2;
+  font-size: 1.2rem;
+  resize: vertical;
+}
+
+.form-group .add-btn {
+  margin-top: 1rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.form-group .remove-btn {
+  margin-top: 1rem;
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.card-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.card-group label {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-group input {
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: none;
+  background-color: #f2f2f2;
+  font-size: 1.2rem;
+}
+
+.card-group .image-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.card-group .image-group input {
+  width: 45%;
+}
+
+.card-group .audio-group {
+  margin-top: 1rem;
+}
+
+.card-group .audio-group label {
+  display: block;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-group .audio-group input[type="file"] {
+  display: none;
+}
+
+/* .card-group .audio-group input[type="button"] {
+  margin-top: 0.5rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-size: 1.2rem;
+} */
+
+.category-container {
+  margin: 2rem 0rem 1rem 0rem !important;
+  border: 1px solid #dedede;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.Collapsible {
+  width: 100% !important;
+}
+
+.Collapsible div {
+  width: 100% !important;
+}
+
+.Collapsible__contentOuter {
+  width: 100% !important;
+}
+
+.Collapsible__contentInner {
+  width: 100% !important;
+  margin: 0 !important;
+}
+
+.Collapsible span {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  width: 100%;
+}
+
+.add-button {
+  background-color: #4caf50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  border-radius: 10px;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.add-card-button {
+  background-color: #555555;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  border-radius: 10px;
+}
+
+.add-category-button-color {
+  background: #fcae1e;
+}

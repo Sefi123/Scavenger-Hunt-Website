@@ -3,15 +3,16 @@ import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import { isEmail } from "validator";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import AuthService from "../services/auth.service";
 
 const required = (value) => {
   if (!value) {
     return (
-      <div className="invalid-feedback d-block">
-        This field is required!
-      </div>
+      <div className="invalid-feedback d-block">This field is required!</div>
     );
   }
 };
@@ -19,9 +20,7 @@ const required = (value) => {
 const validEmail = (value) => {
   if (!isEmail(value)) {
     return (
-      <div className="invalid-feedback d-block">
-        This is not a valid email.
-      </div>
+      <div className="invalid-feedback d-block">This is not a valid email.</div>
     );
   }
 };
@@ -49,7 +48,7 @@ const vpassword = (value) => {
 const Register = (props) => {
   const form = useRef();
   const checkBtn = useRef();
-
+  const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -80,10 +79,16 @@ const Register = (props) => {
     form.current.validateAll();
 
     if (checkBtn.current.context._errors.length === 0) {
-      AuthService.register(username, email, password).then(
+      AuthService.register({
+        name: username,
+        email,
+        password,
+        resetTokenExpiry: null,
+        resetToken: null,
+      }).then(
         (response) => {
-          setMessage(response.data.message);
-          setSuccessful(true);
+          toast(response.data.message);
+          navigate("/login");
         },
         (error) => {
           const resMessage =
