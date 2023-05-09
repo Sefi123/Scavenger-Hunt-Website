@@ -76,11 +76,11 @@ const Login = () => {
         />
 
         <Form onSubmit={handleLogin} ref={form}>
-          <div className="form-group">
+          <div className="login-form-group">
             <label htmlFor="username">Username</label>
             <Input
               type="text"
-              className="form-control"
+              className="form-control override-input-width"
               name="username"
               value={username}
               onChange={onChangeUsername}
@@ -88,7 +88,7 @@ const Login = () => {
             />
           </div>
 
-          <div className="form-group">
+          <div className="login-form-group">
             <label htmlFor="password">Password</label>
             <Input
               type="password"

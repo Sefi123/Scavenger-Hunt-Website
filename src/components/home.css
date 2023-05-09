@@ -101,3 +101,48 @@ ul li {
 ul li:last-child {
   margin-bottom: 0;
 }
+
+.card-home {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  width: 90%;
+  height: 175px;
+  overflow: scroll;
+  cursor: pointer;
+}
+
+.card-home:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.grid-item {
+  background-color: #ccc;
+  padding: 1rem;
+}
+
+.home-card-title-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.home-scavenger-list-title {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+  font-size: 28px;
+  font-weight: 600;
+  font-style: italic;
+  text-decoration: underline;
+}
+
+.home-loader {
+  text-align: center;
+  margin: 20px;
+}

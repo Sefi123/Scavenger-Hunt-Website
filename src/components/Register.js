@@ -117,7 +117,7 @@ const Register = (props) => {
         <Form onSubmit={handleRegister} ref={form}>
           {!successful && (
             <div>
-              <div className="form-group">
+              <div className="login-form-group">
                 <label htmlFor="username">Username</label>
                 <Input
                   type="text"
@@ -129,7 +129,7 @@ const Register = (props) => {
                 />
               </div>
 
-              <div className="form-group">
+              <div className="login-form-group">
                 <label htmlFor="email">Email</label>
                 <Input
                   type="text"
@@ -141,7 +141,7 @@ const Register = (props) => {
                 />
               </div>
 
-              <div className="form-group">
+              <div className="login-form-group">
                 <label htmlFor="password">Password</label>
                 <Input
                   type="password"

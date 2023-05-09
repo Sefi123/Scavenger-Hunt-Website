@@ -17,6 +17,7 @@ import { ToastContainer } from "react-toastify";
 // import AuthVerify from "./common/AuthVerify";
 import EventBus from "./common/EventBus";
 import Form from "./components/ScavengerForm";
+import CardList from "./components/CardList";
 
 const App = () => {
   const [showModeratorBoard, setShowModeratorBoard] = useState(false);
@@ -121,6 +122,7 @@ const App = () => {
         <Routes>
           <Route exact path={"/"} element={<Home />} />
           <Route exact path={"/home"} element={<Home />} />
+          <Route exact path={"/cardList"} element={<CardList />} />
           <Route exact path={"/scavenger_form"} element={<Form />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/register" element={<Register />} />

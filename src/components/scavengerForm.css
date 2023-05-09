@@ -186,3 +186,8 @@
 .add-category-button-color {
   background: #fcae1e;
 }
+
+.card-title-collapse-container {
+  border: 1px solid #999;
+  border-radius: 10px;
+}

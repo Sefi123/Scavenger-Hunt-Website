@@ -1,11 +1,15 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Collapsible from "react-collapsible";
 import { v4 } from "uuid";
 import { uploadImage } from "../common/cloudinary";
 import UserService from "../services/user.service";
+import { toast } from "react-toastify";
 import "./scavengerForm.css";
 
 const Form = () => {
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [location, setLocation] = useState("");
   const [password, setPassword] = useState("");
@@ -105,9 +109,23 @@ const Form = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    const user = JSON.parse(localStorage.getItem("user"));
+
     console.log({ title, location, password, category: categories });
-    const params = { title, location, password, category: categories };
+    const params = {
+      title,
+      location,
+      password,
+      category: categories,
+      created_by: user?.id,
+    };
+    setLoading(true);
     const response = await UserService.createScavengerHunt(params);
+    setLoading(false);
+    if (response?.status == 200) {
+      toast(response.data.message);
+      navigate("/");
+    }
     console.log(response);
   };
 
@@ -158,7 +176,25 @@ const Form = () => {
           </label>
           {category?.cards?.length !== 0 &&
             category?.cards?.map((card, cardIndex) => (
-              <Collapsible trigger={`Card ${cardIndex + 1}`} key={cardIndex}>
+              <Collapsible
+                trigger={<div>{`Card ${cardIndex + 1}`}</div>}
+                key={cardIndex}
+                open={false}
+                transitionTime={100}
+                containerElementProps={{
+                  style: {
+                    border: "1px #999 solid",
+                    borderRadius: "10px",
+                    padding: "10px",
+                    marginBottom: "10px",
+                  },
+                }}
+                triggerStyle={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
                 <span>
                   <label>
                     Card Title:
@@ -228,6 +264,9 @@ const Form = () => {
           Add Category
         </button>
         <button type="submit" className="add-button">
+          {loading && (
+            <span className="spinner-border spinner-border-sm"></span>
+          )}
           Submit
         </button>
       </div>
