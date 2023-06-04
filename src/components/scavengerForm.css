@@ -191,3 +191,27 @@
   border: 1px solid #999;
   border-radius: 10px;
 }
+
+.images-show-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 10px !important;
+}
+
+.form-check-input {
+  position: relative;
+  margin-top: 0;
+  margin-left: 0;
+}
+
+.options-spacing {
+  margin: 10px 5px;
+}
+
+.option-container {
+  display: flex;
+  justify-content: flex-start;
+
+  align-items: baseline;
+}

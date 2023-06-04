@@ -2,7 +2,9 @@ import axios from "axios";
 import { saveAs } from "file-saver";
 import Blob from "blob";
 
-const API_URL = "http://localhost:3000/";
+// const API_URL = "https://nonchalant-foregoing-guarantee.glitch.me/";
+// const API_URL = "http://localhost:3000/";
+const API_URL = "https://scavenger-hunt-l6zb.onrender.com/";
 
 const getPublicContent = () => {
   return axios.get(API_URL + "all");
@@ -22,6 +24,10 @@ const getAdminBoard = () => {
 
 const createScavengerHunt = (payload) => {
   return axios.post(API_URL + "create-scavenger", payload);
+};
+
+const createQuiz = (payload) => {
+  return axios.post(API_URL + "create-quiz", payload);
 };
 
 const getScavengerHunt = async (payload) => {
@@ -62,6 +68,7 @@ const UserService = {
   createScavengerHunt,
   getScavengerHunt,
   generateCardQR,
+  createQuiz,
 };
 
 export default UserService;

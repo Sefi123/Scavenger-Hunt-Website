@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Collapsible from "react-collapsible";
 import { v4 } from "uuid";
 import { uploadImage } from "../common/cloudinary";
+import { Form as BootstrapForm } from "react-bootstrap";
 import UserService from "../services/user.service";
 import { toast } from "react-toastify";
 import "./scavengerForm.css";
@@ -20,9 +21,10 @@ const Form = () => {
         {
           id: v4(),
           card_title: "",
-          images: [],
-          audio: "",
+          image: "",
+          options: ["", "", ""],
           points: 0,
+          correct: "",
         },
       ],
     },
@@ -45,28 +47,46 @@ const Form = () => {
   };
 
   const handleImageChange = async (cardIndex, index, event) => {
-    const { files } = event.target;
-    const list = [...categories];
-    const imageList = [...list[index]?.cards[cardIndex]?.images];
-    for (let i = 0; i < files.length; i++) {
-      await uploadImage(files[i], (url, flag) => {
-        console.log(url, flag);
-        if (url) imageList.push(url);
-      });
-    }
-    console.log(imageList);
-    list[index].cards[cardIndex].images = [...imageList];
-    setCategories(list);
-  };
-
-  const handleAudioChange = async (cardIndex, index, event) => {
+    // const { files } = event.target;
+    // const list = [...categories];
+    // const imageList = [...list[index]?.cards[cardIndex]?.images];
+    // for (let i = 0; i < files.length; i++) {
+    //   await uploadImage(files[i], (url, flag) => {
+    //     console.log(url, flag);
+    //     if (url) imageList.push(url);
+    //   });
+    // }
+    // console.log(imageList);
+    // list[index].cards[cardIndex].images = [...imageList];
+    // setCategories(list);
     const { files } = event.target;
     const list = [...categories];
     await uploadImage(files[0], (url, flag) => {
       console.log(url, flag);
-      if (url) list[index].cards[cardIndex].audio = url;
+      if (url) list[index].cards[cardIndex].image = url;
     });
     // list[index].cards[cardIndex].audio = files[0];
+    setCategories(list);
+  };
+
+  const handleCorrectImageOption = (cardIndex, index, value) => {
+    let list = [...categories];
+    // console.log(cardIndex, index, value);
+    // console.log(list, list[index]);
+    list[index].cards[cardIndex].correct = +value;
+    // console.log(list);
+    setCategories([...list]);
+  };
+
+  const handleOptionChange = (cardIndex, index, optionIndex, event) => {
+    const { value } = event.target;
+    const list = [...categories];
+    // await uploadImage(files[0], (url, flag) => {
+    //   console.log(url, flag);
+    //   if (url) list[index].cards[cardIndex].audio = url;
+    // });
+    // list[index].cards[cardIndex].audio = files[0];
+    list[index].cards[cardIndex].options[optionIndex] = value;
     setCategories(list);
   };
 
@@ -79,9 +99,10 @@ const Form = () => {
           {
             id: v4(),
             card_title: "",
-            images: [],
-            audio: "",
+            image: "",
+            options: ["", "", ""],
             points: 0,
+            correct: "",
           },
         ],
       },
@@ -98,9 +119,10 @@ const Form = () => {
         {
           id: v4(),
           card_title: "",
-          images: [],
-          audio: "",
+          image: "",
+          options: ["", "", ""],
           points: 0,
+          correct: "",
         },
       ],
     };
@@ -156,7 +178,7 @@ const Form = () => {
         <label>
           Password:
           <input
-            type="password"
+            type="text"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
@@ -209,28 +231,63 @@ const Form = () => {
                   </label>
                   <div className="card-group">
                     <label>
-                      Images:
+                      Image:
                       <input
                         type="file"
-                        name="images"
-                        multiple
+                        name="image"
+                        accept=".png,.jpeg,.jpg"
                         onChange={(event) =>
                           handleImageChange(cardIndex, index, event)
                         }
                       />
+                      {card.image.length != 0 && (
+                        <div className="images-show-container">
+                          <img
+                            src={card.image}
+                            alt=""
+                            key={index}
+                            width={"150px"}
+                            height={"100px"}
+                          />
+                        </div>
+                      )}
                     </label>
                   </div>
                   <label>
-                    Audio:
-                    <input
-                      type="file"
-                      name="audio"
-                      onChange={(event) =>
-                        handleAudioChange(cardIndex, index, event)
-                      }
-                    />
+                    Options:
+                    {card.options.map((option, optionIndex) => (
+                      <div className="option-container ">
+                        <p>{optionIndex + 1}</p>
+                        <input
+                          type="text"
+                          name="options"
+                          key={optionIndex}
+                          value={option}
+                          className="options-spacing"
+                          onChange={(event) =>
+                            handleOptionChange(
+                              cardIndex,
+                              index,
+                              optionIndex,
+                              event
+                            )
+                          }
+                        />
+                      </div>
+                    ))}
                   </label>
                   <label>
+                    Correct Option:
+                    <input
+                      type="text"
+                      name="correct"
+                      value={card?.correct}
+                      onChange={(event) => {
+                        handleCardValues(cardIndex, index, event);
+                      }}
+                    />
+                  </label>
+                  {/* <label>
                     Points:
                     <input
                       type="number"
@@ -241,7 +298,7 @@ const Form = () => {
                           handleCardValues(cardIndex, index, event);
                       }}
                     />
-                  </label>
+                  </label> */}
                 </span>
               </Collapsible>
             ))}

@@ -67,6 +67,8 @@ function Home() {
         </div>
       </main>
 
+      {/* <button onClick={() => navigate("/quiz-page")}>Create Quiz</button> */}
+
       <div className="home-scavenger-list-title">Scavengers List</div>
 
       {scavengers?.length == 0 && loader ? (

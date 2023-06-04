@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:3000/";
+// const API_URL = "https://nonchalant-foregoing-guarantee.glitch.me/";
+// const API_URL = "http://localhost:3000/";
+const API_URL = "https://scavenger-hunt-l6zb.onrender.com/";
 
 const register = (payload) => {
   return axios.post(API_URL + "sign-up", payload);

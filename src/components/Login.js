@@ -77,7 +77,7 @@ const Login = () => {
 
         <Form onSubmit={handleLogin} ref={form}>
           <div className="login-form-group">
-            <label htmlFor="username">Username</label>
+            <label htmlFor="username">Email</label>
             <Input
               type="text"
               className="form-control override-input-width"

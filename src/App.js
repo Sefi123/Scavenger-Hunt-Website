@@ -18,6 +18,7 @@ import { ToastContainer } from "react-toastify";
 import EventBus from "./common/EventBus";
 import Form from "./components/ScavengerForm";
 import CardList from "./components/CardList";
+import QuizPage from "./components/QuizPage";
 
 const App = () => {
   const [showModeratorBoard, setShowModeratorBoard] = useState(false);
@@ -124,6 +125,7 @@ const App = () => {
           <Route exact path={"/home"} element={<Home />} />
           <Route exact path={"/cardList"} element={<CardList />} />
           <Route exact path={"/scavenger_form"} element={<Form />} />
+          <Route exact path={"/quiz-page"} element={<QuizPage />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/register" element={<Register />} />
           <Route exact path="/profile" element={<Profile />} />

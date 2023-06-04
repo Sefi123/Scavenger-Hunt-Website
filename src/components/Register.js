@@ -52,6 +52,7 @@ const Register = (props) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [successful, setSuccessful] = useState(false);
   const [message, setMessage] = useState("");
 
@@ -70,11 +71,21 @@ const Register = (props) => {
     setPassword(password);
   };
 
+  const onChangeConfirmPassword = (e) => {
+    const password = e.target.value;
+    setConfirmPassword(password);
+  };
+
   const handleRegister = (e) => {
     e.preventDefault();
 
     setMessage("");
     setSuccessful(false);
+
+    if (confirmPassword != password) {
+      setMessage("Confirm Password is not matched with Password");
+      return;
+    }
 
     form.current.validateAll();
 
@@ -149,6 +160,18 @@ const Register = (props) => {
                   name="password"
                   value={password}
                   onChange={onChangePassword}
+                  validations={[required, vpassword]}
+                />
+              </div>
+
+              <div className="login-form-group">
+                <label htmlFor="password">Confirm Password</label>
+                <Input
+                  type="password"
+                  className="form-control"
+                  name="password"
+                  value={confirmPassword}
+                  onChange={onChangeConfirmPassword}
                   validations={[required, vpassword]}
                 />
               </div>
